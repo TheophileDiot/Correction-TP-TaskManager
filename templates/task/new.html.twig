@@ -1,0 +1,58 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nouvelle tâche{% endblock %}
+
+{% block body %}
+<div class="task-header">
+    <div class="container">
+        <div class="d-flex justify-content-between align-items-center">
+            <h1>Créer une nouvelle tâche</h1>
+            <a href="{{ path('app_task') }}" class="btn btn-secondary btn-task">
+                <i class="fas fa-arrow-left me-1"></i> Retour à la liste
+            </a>
+        </div>
+    </div>
+</div>
+
+<div class="card task-card">
+    <div class="card-header bg-light">
+        <h2 class="mb-0">Nouvelle tâche</h2>
+    </div>
+    <div class="card-body">
+        {{ form_start(form, {'attr': {'class': 'needs-validation'}}) }}
+        
+        <div class="mb-3">
+            {{ form_label(form.title) }}
+            {{ form_widget(form.title) }}
+            <div class="form-error">
+                {{ form_errors(form.title) }}
+            </div>
+        </div>
+        
+        <div class="mb-3">
+            {{ form_label(form.description) }}
+            {{ form_widget(form.description) }}
+            <div class="form-error">
+                {{ form_errors(form.description) }}
+            </div>
+            <div class="form-text">Une description détaillée aidera à mieux comprendre la tâche.</div>
+        </div>
+        
+        <div class="mb-3 form-check">
+            {{ form_widget(form.isDone) }}
+            {{ form_label(form.isDone) }}
+        </div>
+        
+        <div class="d-flex justify-content-between mt-4">
+            <a href="{{ path('app_task') }}" class="btn btn-outline-secondary">
+                <i class="fas fa-times me-1"></i> Annuler
+            </a>
+            <button type="submit" class="btn btn-success">
+                <i class="fas fa-save me-1"></i> Enregistrer
+            </button>
+        </div>
+        
+        {{ form_end(form) }}
+    </div>
+</div>
+{% endblock %}
